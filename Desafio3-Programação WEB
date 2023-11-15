@@ -1,1 +1,34 @@
+CREATE DATABASE RELOGIO_POMODORO;
+USE RELOGIO_POMODORO;
+
+
+CREATE TABLE User (
+  user_id INT PRIMARY KEY,
+  username VARCHAR(255),
+  email VARCHAR(255),
+  passworld VARCHAR(255)
+);
+
+
+CREATE TABLE Task (
+  task_id INT PRIMARY KEY,
+  user_id INT,
+  task_name VARCHAR(255),
+  task_description VARCHAR(255),
+  created_date INT,
+  completed INT,
+  FOREIGN KEY (user_id) REFERENCES User(user_id)
+);
+
+
+CREATE TABLE PomodoroLog (
+  log_id INT PRIMARY KEY,
+  user_id INT,
+  task_id INT,
+  start_time INT,
+  end_time INT,
+  completed_Pom VARCHAR(255),
+  FOREIGN KEY (user_id) REFERENCES User(user_id),
+  FOREIGN KEY (task_id) REFERENCES Task(task_id)
+);
 
